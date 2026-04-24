@@ -38,4 +38,4 @@ pub use module::*;
 
 // Re-export key types for composition root wiring
 pub use application::use_cases::{AnalysisConfig, ScanError, ScanProjectUseCase, ScanResult};
-pub use infrastructure::ast_cache::{AstCacheService, CacheBackend, DragonflyAstCache};
+pub use infrastructure::ast_cache::{AstCacheService, DragonflyAstCache};
