@@ -1,3 +1,4 @@
+use vulnera_contract::infrastructure::cache::CacheBackend;
 //! AST caching service for SAST analysis
 //!
 //! This module provides efficient caching of parsed ASTs using Dragonfly DB.
@@ -182,12 +183,6 @@ pub trait AstCacheService: Send + Sync {
 /// Trait abstracting a binary cache backend for AST storage.
 ///
 /// This allows the SAST module to remain independent of concrete
-/// infrastructure implementations (e.g., Dragonfly, Redis).
-#[async_trait::async_trait]
-pub trait CacheBackend: Send + Sync {
-    /// Retrieve raw bytes by key.
-    async fn get_raw(&self, key: &str) -> Result<Option<Vec<u8>>, String>;
-
     /// Store raw bytes with a TTL.
     async fn set_raw(&self, key: &str, value: &[u8], ttl: Duration) -> Result<(), String>;
 
