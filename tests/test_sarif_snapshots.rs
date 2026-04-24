@@ -6,7 +6,7 @@
 //! - SARIF schema compliance
 //! - Tool metadata
 
-use vulnera_core::config::SastConfig;
+use vulnera_contract::config::SastConfig;
 use vulnera_sast::application::use_cases::{AnalysisConfig, ScanProjectUseCase};
 use vulnera_sast::infrastructure::rules::RuleRepository;
 

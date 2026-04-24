@@ -179,17 +179,40 @@ pub trait AstCacheService: Send + Sync {
     }
 }
 
+/// Trait abstracting a binary cache backend for AST storage.
+///
+/// This allows the SAST module to remain independent of concrete
+/// infrastructure implementations (e.g., Dragonfly, Redis).
+#[async_trait::async_trait]
+pub trait CacheBackend: Send + Sync {
+    /// Retrieve raw bytes by key.
+    async fn get_raw(&self, key: &str) -> Result<Option<Vec<u8>>, String>;
+
+    /// Store raw bytes with a TTL.
+    async fn set_raw(&self, key: &str, value: &[u8], ttl: Duration) -> Result<(), String>;
+
+    /// Delete a single key.
+    async fn delete(&self, key: &str) -> Result<(), String>;
+
+    /// Delete all keys matching a pattern.
+    async fn delete_by_pattern(&self, pattern: &str) -> Result<usize, String>;
+}
+
 /// Dragonfly-backed AST cache implementation
-pub struct DragonflyAstCache {
-    /// Reference to the core Dragonfly cache
-    dragonfly: Arc<vulnera_core::infrastructure::cache::DragonflyCache>,
+///
+/// Generic over any [`CacheBackend`] implementation, allowing the
+/// SAST crate to be used standalone without a hard dependency on
+/// a specific distributed cache implementation.
+pub struct DragonflyAstCache<B> {
+    /// Reference to the cache backend
+    dragonfly: Arc<B>,
     /// Default TTL for AST entries
     default_ttl: Duration,
 }
 
-impl DragonflyAstCache {
+impl<B: CacheBackend> DragonflyAstCache<B> {
     /// Create a new Dragonfly AST cache
-    pub fn new(dragonfly: Arc<vulnera_core::infrastructure::cache::DragonflyCache>) -> Self {
+    pub fn new(dragonfly: Arc<B>) -> Self {
         Self {
             dragonfly,
             default_ttl: Duration::from_secs(DEFAULT_AST_TTL_SECS),
@@ -197,16 +220,15 @@ impl DragonflyAstCache {
     }
 
     /// Create with custom TTL
-    pub fn with_ttl(
-        dragonfly: Arc<vulnera_core::infrastructure::cache::DragonflyCache>,
-        ttl: Duration,
-    ) -> Self {
+    pub fn with_ttl(dragonfly: Arc<B>, ttl: Duration) -> Self {
         Self {
             dragonfly,
             default_ttl: ttl,
         }
     }
+}
 
+impl<B> DragonflyAstCache<B> {
     /// Serialize AST entry to bytes using rkyv
     fn serialize_entry(entry: &CachedAstEntry) -> Result<Vec<u8>, AstCacheError> {
         rkyv::to_bytes::<RancorError>(entry)
@@ -247,7 +269,7 @@ impl DragonflyAstCache {
 }
 
 #[async_trait::async_trait]
-impl AstCacheService for DragonflyAstCache {
+impl<B: CacheBackend> AstCacheService for DragonflyAstCache<B> {
     #[instrument(skip(self), fields(language = %language))]
     async fn get(
         &self,
@@ -261,7 +283,7 @@ impl AstCacheService for DragonflyAstCache {
             .dragonfly
             .get_raw(&key)
             .await
-            .map_err(|e| AstCacheError::Backend(e.to_string()))?;
+            .map_err(AstCacheError::Backend)?;
 
         match data {
             Some(bytes) => {
@@ -310,7 +332,7 @@ impl AstCacheService for DragonflyAstCache {
         self.dragonfly
             .set_raw(&key, &bytes, ttl)
             .await
-            .map_err(|e| AstCacheError::Backend(e.to_string()))
+            .map_err(AstCacheError::Backend)
     }
 
     #[instrument(skip(self), fields(language = %language))]
@@ -321,7 +343,7 @@ impl AstCacheService for DragonflyAstCache {
             .get_raw(&key)
             .await
             .map(|opt| opt.is_some())
-            .map_err(|e| AstCacheError::Backend(e.to_string()))
+            .map_err(AstCacheError::Backend)
     }
 
     #[instrument(skip(self), fields(language = %language))]
@@ -331,7 +353,7 @@ impl AstCacheService for DragonflyAstCache {
             .delete(&key)
             .await
             .map(|_| ())
-            .map_err(|e| AstCacheError::Backend(e.to_string()))
+            .map_err(AstCacheError::Backend)
     }
 
     #[instrument(skip(self))]
@@ -342,7 +364,7 @@ impl AstCacheService for DragonflyAstCache {
             .dragonfly
             .delete_by_pattern(&pattern)
             .await
-            .map_err(|e| AstCacheError::Backend(e.to_string()))?;
+            .map_err(AstCacheError::Backend)?;
 
         info!(deleted_keys = deleted, "Cleared AST cache");
         Ok(())
@@ -411,7 +433,7 @@ impl AstCacheService for InMemoryAstCache {
         let entry = CachedAstEntry {
             ast: CachedAstNode::from(ast),
             language: language.to_tree_sitter_name().to_string(),
-            cached_at: DragonflyAstCache::current_timestamp(),
+            cached_at: DragonflyAstCache::<()>::current_timestamp(),
             content_hash: content_hash.to_string(),
         };
 

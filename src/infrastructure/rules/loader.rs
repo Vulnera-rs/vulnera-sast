@@ -11,7 +11,7 @@ use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::path::Path;
 use tracing::{debug, warn};
-use vulnera_core::config::RulePackConfig;
+use vulnera_contract::config::RulePackConfig;
 
 /// Trait for loading rules from various sources
 pub trait RuleLoader: Send + Sync {

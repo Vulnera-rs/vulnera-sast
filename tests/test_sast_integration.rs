@@ -1,6 +1,6 @@
 use uuid::Uuid;
-use vulnera_core::config::SastConfig;
-use vulnera_core::domain::module::AnalysisModule;
+use vulnera_contract::config::SastConfig;
+use vulnera_contract::domain::module::AnalysisModule;
 use vulnera_sast::SastModule;
 
 #[tokio::test]
@@ -26,7 +26,7 @@ async fn test_sast_module_rust_scan() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -67,7 +67,7 @@ async fn test_sast_module_python_scan() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -108,7 +108,7 @@ async fn test_sast_module_js_scan() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -148,7 +148,7 @@ func main() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -188,7 +188,7 @@ int main() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -226,7 +226,7 @@ int main() {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -268,7 +268,7 @@ render_template_string(template)
     .unwrap();
 
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -300,7 +300,7 @@ setTimeout("alert('hi')", 1000);
     .unwrap();
 
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -336,7 +336,7 @@ fn main() {
     .unwrap();
 
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -382,7 +382,7 @@ func main() {
     .unwrap();
 
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -418,7 +418,7 @@ int main() {
     .unwrap();
 
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),
@@ -463,7 +463,7 @@ app.get('/render', (req, res) => {
 
     let module = SastModule::with_config(&config);
     let result = module
-        .execute(&vulnera_core::domain::module::ModuleConfig {
+        .execute(&vulnera_contract::domain::module::ModuleConfig {
             job_id: Uuid::new_v4(),
             project_id: "test-project".to_string(),
             source_uri: temp_dir.path().to_string_lossy().to_string(),

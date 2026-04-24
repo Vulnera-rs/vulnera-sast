@@ -4,12 +4,12 @@
 //! boundaries, not just within a single function.
 
 use uuid::Uuid;
-use vulnera_core::config::{AnalysisDepth, SastConfig};
-use vulnera_core::domain::module::{AnalysisModule, ModuleConfig};
+use vulnera_contract::config::{AnalysisDepth, SastConfig};
+use vulnera_contract::domain::module::{AnalysisModule, ModuleConfig};
 use vulnera_sast::SastModule;
 
 /// Helper to run SAST scan on a temp directory with given files.
-async fn scan_files(files: &[(&str, &str)]) -> vulnera_core::domain::module::ModuleResult {
+async fn scan_files(files: &[(&str, &str)]) -> vulnera_contract::domain::module::ModuleResult {
     let temp_dir = tempfile::tempdir().unwrap();
     for (name, content) in files {
         let file_path = temp_dir.path().join(name);

@@ -15,7 +15,7 @@ use common::accuracy::AccuracyReport;
 use common::fixture_runner;
 use common::fixture_types::CveFixture;
 use std::path::PathBuf;
-use vulnera_core::config::{AnalysisDepth, SastConfig};
+use vulnera_contract::config::{AnalysisDepth, SastConfig};
 use vulnera_sast::{AnalysisConfig, ScanProjectUseCase};
 
 /// Discover all YAML fixture files under `tests/data/cve-fixtures/`.

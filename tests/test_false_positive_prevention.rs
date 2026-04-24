@@ -10,8 +10,8 @@
 use std::collections::HashMap;
 use tempfile::TempDir;
 use uuid::Uuid;
-use vulnera_core::config::SastConfig;
-use vulnera_core::domain::module::{AnalysisModule, ModuleConfig};
+use vulnera_contract::config::SastConfig;
+use vulnera_contract::domain::module::{AnalysisModule, ModuleConfig};
 use vulnera_sast::SastModule;
 use vulnera_sast::domain::suppression::FileSuppressions;
 

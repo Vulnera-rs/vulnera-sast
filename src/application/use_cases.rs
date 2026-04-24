@@ -16,7 +16,7 @@ use streaming_iterator::StreamingIterator;
 use tokio::sync::RwLock;
 use tracing::{debug, error, info, instrument, warn};
 
-use vulnera_core::config::{AnalysisDepth, SastConfig};
+use vulnera_contract::config::{AnalysisDepth, SastConfig};
 
 use crate::domain::call_graph::ParameterInfo;
 use crate::domain::finding::{
@@ -2246,7 +2246,7 @@ impl ScanError {
 #[cfg(test)]
 mod tests {
     use super::{AnalysisConfig, ScanProjectUseCase};
-    use vulnera_core::config::{AnalysisDepth, SastConfig};
+    use vulnera_contract::config::{AnalysisDepth, SastConfig};
 
     fn build_use_case(mut config: AnalysisConfig) -> ScanProjectUseCase {
         config.enable_call_graph = false;

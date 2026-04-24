@@ -4,8 +4,8 @@ use async_trait::async_trait;
 use std::path::Path;
 use std::sync::Arc;
 
-use vulnera_core::config::{AnalysisDepth as SastAnalysisDepth, SastConfig};
-use vulnera_core::domain::module::{
+use vulnera_contract::config::{AnalysisDepth as SastAnalysisDepth, SastConfig};
+use vulnera_contract::domain::module::{
     AnalysisModule, Finding, FindingConfidence, FindingSeverity, FindingType, Location,
     ModuleConfig, ModuleExecutionError, ModuleResult, ModuleResultMetadata, ModuleType,
     VulnerabilityFindingMetadata, VulnerabilitySemanticNode, VulnerabilitySemanticPath,

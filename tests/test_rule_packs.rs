@@ -5,7 +5,7 @@ use git2::{Repository, Signature};
 use sha2::{Digest, Sha256};
 use tempfile::TempDir;
 
-use vulnera_core::config::RulePackConfig;
+use vulnera_contract::config::RulePackConfig;
 use vulnera_sast::infrastructure::rules::{RuleLoader, RulePackLoader};
 
 fn write_rule_pack(repo_path: &Path, content: &str) -> PathBuf {

@@ -1,0 +1,3361 @@
+---
+source: vulnera-sast/tests/test_sarif_snapshots.rs
+assertion_line: 94
+expression: sarif
+---
+$schema: "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json"
+runs:
+  - invocations:
+      - executionSuccessful: true
+        toolExecutionNotifications: []
+    results:
+      - codeFlows: ~
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes: ~
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 20
+                endLine: 7
+                snippet:
+                  text: exec(user_input)
+                startColumn: 4
+                startLine: 7
+        message:
+          markdown: ~
+          text: Potential command injection vulnerability
+        ruleId: command-injection
+      - codeFlows: ~
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes: ~
+        level: warning
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 20
+                endLine: 6
+                snippet:
+                  text: eval(user_input)
+                startColumn: 4
+                startLine: 6
+        message:
+          markdown: ~
+          text: Avoid using eval() with user input. Use ast.literal_eval() for safe data parsing.
+        ruleId: unsafe-function-call
+      - codeFlows: ~
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes: ~
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 20
+                endLine: 7
+                snippet:
+                  text: exec(user_input)
+                startColumn: 4
+                startLine: 7
+        message:
+          markdown: ~
+          text: Avoid using exec() with user input.
+        ruleId: python-exec
+      - codeFlows: ~
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes: ~
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 25
+                endLine: 8
+                snippet:
+                  text: os.system(user_input)
+                startColumn: 4
+                startLine: 8
+        message:
+          markdown: ~
+          text: Use subprocess with list arguments instead of os.system.
+        ruleId: python-os-system
+      - codeFlows:
+          - threadFlows:
+              - locations:
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 5
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 5
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 6
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 6
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes:
+          - artifactChanges: []
+            description:
+              markdown: ~
+              text: Sanitize or validate the data before passing to Code execution. Consider using appropriate escaping for code_injection context.
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 20
+                endLine: 6
+                snippet:
+                  text: user_input
+                startColumn: 4
+                startLine: 6
+        message:
+          markdown: ~
+          text: "Tainted data from user_input flows to code injection: Code execution"
+        ruleId: data-flow-python-code_injection
+      - codeFlows:
+          - threadFlows:
+              - locations:
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 5
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 5
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 7
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 7
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes:
+          - artifactChanges: []
+            description:
+              markdown: ~
+              text: Sanitize or validate the data before passing to Code execution. Consider using appropriate escaping for code_injection context.
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 20
+                endLine: 7
+                snippet:
+                  text: user_input
+                startColumn: 4
+                startLine: 7
+        message:
+          markdown: ~
+          text: "Tainted data from user_input flows to code injection: Code execution"
+        ruleId: data-flow-python-code_injection
+      - codeFlows:
+          - threadFlows:
+              - locations:
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 5
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 5
+                  - location:
+                      physicalLocation:
+                        artifactLocation:
+                          uri: "<REDACTED>/vuln.py"
+                          uriBaseId: "%SRCROOT%"
+                        region:
+                          endColumn: ~
+                          endLine: 8
+                          snippet:
+                            text: user_input
+                          startColumn: 4
+                          startLine: 8
+        fingerprints:
+          primaryLocationLineHash: "<REDACTED>"
+        fixes:
+          - artifactChanges: []
+            description:
+              markdown: ~
+              text: Sanitize or validate the data before passing to os.system. Consider using appropriate escaping for command_injection context.
+        level: error
+        locations:
+          - physicalLocation:
+              artifactLocation:
+                uri: "<REDACTED>/vuln.py"
+                uriBaseId: "%SRCROOT%"
+              region:
+                endColumn: 25
+                endLine: 8
+                snippet:
+                  text: user_input
+                startColumn: 4
+                startLine: 8
+        message:
+          markdown: ~
+          text: "Tainted data from user_input flows to command injection: os.system"
+        ruleId: data-flow-python-command_injection
+    tool:
+      driver:
+        name: vulnera-sast
+        rules:
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential SQL injection vulnerability
+            help:
+              markdown: "## SQL Injection\n\nPotential SQL injection vulnerability\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential SQL injection vulnerability
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: sql-injection
+            name: SQL Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - sql
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: SQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential command injection vulnerability
+            help:
+              markdown: "## Command Injection\n\nPotential command injection vulnerability\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential command injection vulnerability
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: command-injection
+            name: Command Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potentially unsafe eval() call
+            help:
+              markdown: "## Direct Eval\n\nPotentially unsafe eval() call\n\n### CWE\nCWE-94, CWE-95\n\n### OWASP\nA03:2021 - Injection"
+              text: Potentially unsafe eval() call
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-eval-direct
+            name: Direct Eval
+            properties:
+              precision: high
+              tags:
+                - injection
+                - code-execution
+                - javascript
+                - CWE-94
+                - CWE-95
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Direct Eval
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: setTimeout/setInterval with string argument acts like eval()
+            help:
+              markdown: "## Indirect Eval\n\nsetTimeout/setInterval with string argument acts like eval()\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: setTimeout/setInterval with string argument acts like eval()
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-eval-indirect
+            name: Indirect Eval
+            properties:
+              precision: high
+              tags:
+                - injection
+                - code-execution
+                - javascript
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Indirect Eval
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: new Function() constructor allows dynamic code execution similar to eval
+            help:
+              markdown: "## new Function Constructor\n\nnew Function() constructor allows dynamic code execution similar to eval\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: new Function() constructor allows dynamic code execution similar to eval
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-new-function
+            name: new Function Constructor
+            properties:
+              precision: high
+              tags:
+                - injection
+                - code-execution
+                - javascript
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: new Function Constructor
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential command injection via child_process
+            help:
+              markdown: "## Child Process Execution\n\nPotential command injection via child_process\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential command injection via child_process
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-child-process
+            name: Child Process Execution
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - javascript
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Child Process Execution
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Setting innerHTML can lead to XSS if input is not sanitized
+            help:
+              markdown: "## innerHTML XSS\n\nSetting innerHTML can lead to XSS if input is not sanitized\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: Setting innerHTML can lead to XSS if input is not sanitized
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-xss
+            name: innerHTML XSS
+            properties:
+              precision: high
+              tags:
+                - xss
+                - javascript
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: innerHTML XSS
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: document.write can lead to XSS vulnerabilities
+            help:
+              markdown: "## document.write XSS\n\ndocument.write can lead to XSS vulnerabilities\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: document.write can lead to XSS vulnerabilities
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-document-write
+            name: document.write XSS
+            properties:
+              precision: high
+              tags:
+                - xss
+                - javascript
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: document.write XSS
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential XSS using dangerouslySetInnerHTML or similar unsafe patterns
+            help:
+              markdown: "## XSS via dangerouslySetInnerHTML\n\nPotential XSS using dangerouslySetInnerHTML or similar unsafe patterns\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential XSS using dangerouslySetInnerHTML or similar unsafe patterns
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-xss-react
+            name: XSS via dangerouslySetInnerHTML
+            properties:
+              precision: high
+              tags:
+                - xss
+                - react
+                - javascript
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: XSS via dangerouslySetInnerHTML
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Setting outerHTML can lead to XSS if input is not sanitized
+            help:
+              markdown: "## outerHTML XSS\n\nSetting outerHTML can lead to XSS if input is not sanitized\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: Setting outerHTML can lead to XSS if input is not sanitized
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-outerhtml-xss
+            name: outerHTML XSS
+            properties:
+              precision: high
+              tags:
+                - xss
+                - javascript
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: outerHTML XSS
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential SSTI vulnerability - template engine may execute user input
+            help:
+              markdown: "## Server-Side Template Injection\n\nPotential SSTI vulnerability - template engine may execute user input\n\n### CWE\nCWE-94, CWE-1336\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential SSTI vulnerability - template engine may execute user input
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-ssti
+            name: Server-Side Template Injection
+            properties:
+              precision: high
+              tags:
+                - ssti
+                - injection
+                - javascript
+                - CWE-94
+                - CWE-1336
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Server-Side Template Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Archive extraction without path validation may allow writing files outside target directory
+            help:
+              markdown: "## Path Traversal / Zip Slip\n\nArchive extraction without path validation may allow writing files outside target directory\n\n### CWE\nCWE-22, CWE-73\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Archive extraction without path validation may allow writing files outside target directory
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-path-traversal
+            name: Path Traversal / Zip Slip
+            properties:
+              precision: high
+              tags:
+                - path-traversal
+                - zip-slip
+                - javascript
+                - CWE-22
+                - CWE-73
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Path Traversal / Zip Slip
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Object merge/extend without proper filtering can lead to prototype pollution
+            help:
+              markdown: "## Prototype Pollution\n\nObject merge/extend without proper filtering can lead to prototype pollution\n\n### CWE\nCWE-1321\n\n### OWASP\nA03:2021 - Injection"
+              text: Object merge/extend without proper filtering can lead to prototype pollution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-prototype-pollution
+            name: Prototype Pollution
+            properties:
+              precision: high
+              tags:
+                - prototype-pollution
+                - javascript
+                - CWE-1321
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Prototype Pollution
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Unsafe object merge via lodash-style helpers can allow prototype pollution
+            help:
+              markdown: "## Lodash Merge Prototype Pollution\n\nUnsafe object merge via lodash-style helpers can allow prototype pollution\n\n### CWE\nCWE-1321\n\n### OWASP\nA03:2021 - Injection"
+              text: Unsafe object merge via lodash-style helpers can allow prototype pollution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-lodash-prototype-pollution
+            name: Lodash Merge Prototype Pollution
+            properties:
+              precision: high
+              tags:
+                - prototype-pollution
+                - lodash
+                - javascript
+                - CWE-1321
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Lodash Merge Prototype Pollution
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Potential open redirect vulnerability
+            help:
+              markdown: "## Open Redirect\n\nPotential open redirect vulnerability\n\n### CWE\nCWE-601\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Potential open redirect vulnerability
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-open-redirect
+            name: Open Redirect
+            properties:
+              precision: medium
+              tags:
+                - redirect
+                - javascript
+                - CWE-601
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Open Redirect
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Usage of Math.random() for security-sensitive operations is insecure
+            help:
+              markdown: "## Insecure Randomness\n\nUsage of Math.random() for security-sensitive operations is insecure\n\n### CWE\nCWE-330\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: Usage of Math.random() for security-sensitive operations is insecure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-insecure-random
+            name: Insecure Randomness
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - randomness
+                - javascript
+                - CWE-330
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Insecure Randomness
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Usage of deprecated or weak cryptographic algorithms
+            help:
+              markdown: "## Weak Cryptographic Algorithm\n\nUsage of deprecated or weak cryptographic algorithms\n\n### CWE\nCWE-327, CWE-328\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: Usage of deprecated or weak cryptographic algorithms
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-weak-crypto
+            name: Weak Cryptographic Algorithm
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - weak-algorithm
+                - javascript
+                - CWE-327
+                - CWE-328
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Weak Cryptographic Algorithm
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: CORS configuration with wildcard origin can expose sensitive data
+            help:
+              markdown: "## CORS Wildcard\n\nCORS configuration with wildcard origin can expose sensitive data\n\n### CWE\nCWE-942\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: CORS configuration with wildcard origin can expose sensitive data
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-cors-wildcard
+            name: CORS Wildcard
+            properties:
+              precision: medium
+              tags:
+                - cors
+                - misconfiguration
+                - javascript
+                - CWE-942
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: CORS Wildcard
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Security feature disabled in configuration
+            help:
+              markdown: "## Disabled Security Feature\n\nSecurity feature disabled in configuration\n\n### CWE\nCWE-614, CWE-1004\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Security feature disabled in configuration
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-disabled-security
+            name: Disabled Security Feature
+            properties:
+              precision: medium
+              tags:
+                - cookies
+                - security
+                - javascript
+                - CWE-614
+                - CWE-1004
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: Disabled Security Feature
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Potential logging of sensitive data
+            help:
+              markdown: "## Sensitive Data Logging\n\nPotential logging of sensitive data\n\n### CWE\nCWE-532\n\n### OWASP\nA09:2021 - Security Logging and Monitoring Failures"
+              text: Potential logging of sensitive data
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-sensitive-logging
+            name: Sensitive Data Logging
+            properties:
+              precision: medium
+              tags:
+                - logging
+                - sensitive-data
+                - javascript
+                - CWE-532
+                - "A09:2021 - Security Logging and Monitoring Failures"
+            shortDescription:
+              markdown: ~
+              text: Sensitive Data Logging
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: JSON.parse without error handling can cause unhandled exceptions
+            help:
+              markdown: "## Unsafe JSON Parse\n\nJSON.parse without error handling can cause unhandled exceptions\n\n### CWE\nCWE-20\n\n### OWASP\nA03:2021 - Injection"
+              text: JSON.parse without error handling can cause unhandled exceptions
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-unsafe-json-parse
+            name: Unsafe JSON Parse
+            properties:
+              precision: low
+              tags:
+                - json
+                - error-handling
+                - javascript
+                - CWE-20
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Unsafe JSON Parse
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: postMessage with wildcard origin can lead to data exposure
+            help:
+              markdown: "## Unsafe PostMessage\n\npostMessage with wildcard origin can lead to data exposure\n\n### CWE\nCWE-346\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: postMessage with wildcard origin can lead to data exposure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-postmessage-origin
+            name: Unsafe PostMessage
+            properties:
+              precision: medium
+              tags:
+                - postmessage
+                - origin
+                - javascript
+                - CWE-346
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Unsafe PostMessage
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: "Potential NoSQL injection via MongoDB query operators ($gt, $ne, $regex, etc.)"
+            help:
+              markdown: "## NoSQL Injection\n\nPotential NoSQL injection via MongoDB query operators ($gt, $ne, $regex, etc.)\n\n### CWE\nCWE-943, CWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: "Potential NoSQL injection via MongoDB query operators ($gt, $ne, $regex, etc.)"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-nosql-injection
+            name: NoSQL Injection
+            properties:
+              precision: high
+              tags:
+                - nosql
+                - mongodb
+                - injection
+                - javascript
+                - CWE-943
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: NoSQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: XML parser may be vulnerable to XXE attacks if external entities are not disabled
+            help:
+              markdown: "## XML External Entity (XXE) Injection\n\nXML parser may be vulnerable to XXE attacks if external entities are not disabled\n\n### CWE\nCWE-611, CWE-827\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: XML parser may be vulnerable to XXE attacks if external entities are not disabled
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-xxe
+            name: XML External Entity (XXE) Injection
+            properties:
+              precision: high
+              tags:
+                - xxe
+                - xml
+                - injection
+                - javascript
+                - CWE-611
+                - CWE-827
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: XML External Entity (XXE) Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: JWT verification without algorithm restriction allows signature bypass
+            help:
+              markdown: "## JWT Algorithm None Bypass\n\nJWT verification without algorithm restriction allows signature bypass\n\n### CWE\nCWE-347, CWE-327\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: JWT verification without algorithm restriction allows signature bypass
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-jwt-none-algorithm
+            name: JWT Algorithm None Bypass
+            properties:
+              precision: high
+              tags:
+                - jwt
+                - authentication
+                - crypto
+                - javascript
+                - CWE-347
+                - CWE-327
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: JWT Algorithm None Bypass
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Regular expression with potential catastrophic backtracking
+            help:
+              markdown: "## ReDoS Vulnerability\n\nRegular expression with potential catastrophic backtracking\n\n### CWE\nCWE-1333, CWE-400\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Regular expression with potential catastrophic backtracking
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-regex-redos
+            name: ReDoS Vulnerability
+            properties:
+              precision: high
+              tags:
+                - redos
+                - regex
+                - dos
+                - javascript
+                - CWE-1333
+                - CWE-400
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: ReDoS Vulnerability
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: File upload without proper validation can lead to RCE
+            help:
+              markdown: "## Unrestricted File Upload\n\nFile upload without proper validation can lead to RCE\n\n### CWE\nCWE-434\n\n### OWASP\nA04:2021 - Insecure Design"
+              text: File upload without proper validation can lead to RCE
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-file-upload-unsafe
+            name: Unrestricted File Upload
+            properties:
+              precision: high
+              tags:
+                - file-upload
+                - rce
+                - javascript
+                - CWE-434
+                - "A04:2021 - Insecure Design"
+            shortDescription:
+              markdown: ~
+              text: Unrestricted File Upload
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Cookies without HttpOnly flag can be accessed via JavaScript XSS
+            help:
+              markdown: "## Cookie Missing HttpOnly\n\nCookies without HttpOnly flag can be accessed via JavaScript XSS\n\n### CWE\nCWE-1004\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Cookies without HttpOnly flag can be accessed via JavaScript XSS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-cookie-no-httponly
+            name: Cookie Missing HttpOnly
+            properties:
+              precision: medium
+              tags:
+                - cookies
+                - httponly
+                - xss
+                - javascript
+                - CWE-1004
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: Cookie Missing HttpOnly
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Cookies without Secure flag can be transmitted over HTTP
+            help:
+              markdown: "## Cookie Missing Secure Flag\n\nCookies without Secure flag can be transmitted over HTTP\n\n### CWE\nCWE-614\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Cookies without Secure flag can be transmitted over HTTP
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-cookie-no-secure
+            name: Cookie Missing Secure Flag
+            properties:
+              precision: medium
+              tags:
+                - cookies
+                - secure
+                - javascript
+                - CWE-614
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: Cookie Missing Secure Flag
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: CSRF protection explicitly disabled or not configured
+            help:
+              markdown: "## CSRF Protection Disabled\n\nCSRF protection explicitly disabled or not configured\n\n### CWE\nCWE-352\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: CSRF protection explicitly disabled or not configured
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-csrf-disabled
+            name: CSRF Protection Disabled
+            properties:
+              precision: high
+              tags:
+                - csrf
+                - security
+                - javascript
+                - CWE-352
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: CSRF Protection Disabled
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: GraphQL introspection enabled - may expose schema details
+            help:
+              markdown: "## GraphQL Introspection Enabled\n\nGraphQL introspection enabled - may expose schema details\n\n### CWE\nCWE-200\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: GraphQL introspection enabled - may expose schema details
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-graphql-introspection
+            name: GraphQL Introspection Enabled
+            properties:
+              precision: low
+              tags:
+                - graphql
+                - introspection
+                - javascript
+                - CWE-200
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: GraphQL Introspection Enabled
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: GraphQL queries without depth limit are vulnerable to DoS
+            help:
+              markdown: "## GraphQL No Depth Limit\n\nGraphQL queries without depth limit are vulnerable to DoS\n\n### CWE\nCWE-400, CWE-770\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: GraphQL queries without depth limit are vulnerable to DoS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-graphql-no-depth-limit
+            name: GraphQL No Depth Limit
+            properties:
+              precision: medium
+              tags:
+                - graphql
+                - dos
+                - javascript
+                - CWE-400
+                - CWE-770
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: GraphQL No Depth Limit
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: SQL query built with string concatenation is vulnerable to injection
+            help:
+              markdown: "## SQL Injection\n\nSQL query built with string concatenation is vulnerable to injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: SQL query built with string concatenation is vulnerable to injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-sql-injection
+            name: SQL Injection
+            properties:
+              precision: high
+              tags:
+                - sql
+                - injection
+                - javascript
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: SQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Sequelize raw query without parameterization
+            help:
+              markdown: "## Sequelize Raw Query\n\nSequelize raw query without parameterization\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: Sequelize raw query without parameterization
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: js-sequelize-raw
+            name: Sequelize Raw Query
+            properties:
+              precision: high
+              tags:
+                - sql
+                - sequelize
+                - injection
+                - javascript
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Sequelize Raw Query
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: "Using 'any' type bypasses TypeScript's type checking"
+            help:
+              markdown: "## Any Type Usage\n\nUsing 'any' type bypasses TypeScript's type checking\n\n### CWE\n\n\n### OWASP\n"
+              text: "Using 'any' type bypasses TypeScript's type checking"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-any-type
+            name: Any Type Usage
+            properties:
+              precision: low
+              tags:
+                - type-safety
+                - typescript
+            shortDescription:
+              markdown: ~
+              text: Any Type Usage
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: "@ts-ignore suppresses TypeScript errors and may hide issues"
+            help:
+              markdown: "## @ts-ignore Suppression\n\n@ts-ignore suppresses TypeScript errors and may hide issues\n\n### CWE\n\n\n### OWASP\n"
+              text: "@ts-ignore suppresses TypeScript errors and may hide issues"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-ignore
+            name: "@ts-ignore Suppression"
+            properties:
+              precision: low
+              tags:
+                - type-safety
+                - typescript
+            shortDescription:
+              markdown: ~
+              text: "@ts-ignore Suppression"
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Non-null assertion (!) bypasses null checks and can cause runtime errors
+            help:
+              markdown: "## Non-Null Assertion\n\nNon-null assertion (!) bypasses null checks and can cause runtime errors\n\n### CWE\nCWE-476\n\n### OWASP\n"
+              text: Non-null assertion (!) bypasses null checks and can cause runtime errors
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-non-null-assertion
+            name: Non-Null Assertion
+            properties:
+              precision: low
+              tags:
+                - type-safety
+                - null-pointer
+                - typescript
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Non-Null Assertion
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Type assertions bypass type checking and may cause runtime errors
+            help:
+              markdown: "## Type Assertion\n\nType assertions bypass type checking and may cause runtime errors\n\n### CWE\n\n\n### OWASP\n"
+              text: Type assertions bypass type checking and may cause runtime errors
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-type-assertion
+            name: Type Assertion
+            properties:
+              precision: low
+              tags:
+                - type-safety
+                - typescript
+            shortDescription:
+              markdown: ~
+              text: Type Assertion
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: eval() allows arbitrary code execution
+            help:
+              markdown: "## Eval Usage\n\neval() allows arbitrary code execution\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: eval() allows arbitrary code execution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-eval
+            name: Eval Usage
+            properties:
+              precision: high
+              tags:
+                - injection
+                - code-execution
+                - typescript
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Eval Usage
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Setting innerHTML can lead to XSS
+            help:
+              markdown: "## innerHTML XSS\n\nSetting innerHTML can lead to XSS\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: Setting innerHTML can lead to XSS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-innerhtml
+            name: innerHTML XSS
+            properties:
+              precision: high
+              tags:
+                - xss
+                - typescript
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: innerHTML XSS
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential command injection via child_process
+            help:
+              markdown: "## Child Process Execution\n\nPotential command injection via child_process\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential command injection via child_process
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-child-process
+            name: Child Process Execution
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - typescript
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Child Process Execution
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: SQL query built with string concatenation is vulnerable to injection
+            help:
+              markdown: "## SQL Injection\n\nSQL query built with string concatenation is vulnerable to injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: SQL query built with string concatenation is vulnerable to injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-sql-injection
+            name: SQL Injection
+            properties:
+              precision: high
+              tags:
+                - sql
+                - injection
+                - typescript
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: SQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential NoSQL injection via MongoDB query
+            help:
+              markdown: "## NoSQL Injection\n\nPotential NoSQL injection via MongoDB query\n\n### CWE\nCWE-943\n\n### OWASP\nA03:2021 - Injection"
+              text: Potential NoSQL injection via MongoDB query
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-nosql-injection
+            name: NoSQL Injection
+            properties:
+              precision: high
+              tags:
+                - nosql
+                - mongodb
+                - typescript
+                - CWE-943
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: NoSQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: JWT verification without algorithm restriction
+            help:
+              markdown: "## JWT Algorithm Not Specified\n\nJWT verification without algorithm restriction\n\n### CWE\nCWE-347\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: JWT verification without algorithm restriction
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-jwt-verify
+            name: JWT Algorithm Not Specified
+            properties:
+              precision: high
+              tags:
+                - jwt
+                - authentication
+                - typescript
+                - CWE-347
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: JWT Algorithm Not Specified
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Object merge without filtering can lead to prototype pollution
+            help:
+              markdown: "## Prototype Pollution\n\nObject merge without filtering can lead to prototype pollution\n\n### CWE\nCWE-1321\n\n### OWASP\nA03:2021 - Injection"
+              text: Object merge without filtering can lead to prototype pollution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-prototype-pollution
+            name: Prototype Pollution
+            properties:
+              precision: high
+              tags:
+                - prototype-pollution
+                - typescript
+                - CWE-1321
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Prototype Pollution
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Template engine may execute user input
+            help:
+              markdown: "## Server-Side Template Injection\n\nTemplate engine may execute user input\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: Template engine may execute user input
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-ssti
+            name: Server-Side Template Injection
+            properties:
+              precision: high
+              tags:
+                - ssti
+                - injection
+                - typescript
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Server-Side Template Injection
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: CORS with wildcard origin exposes API
+            help:
+              markdown: "## CORS Wildcard Origin\n\nCORS with wildcard origin exposes API\n\n### CWE\nCWE-942\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: CORS with wildcard origin exposes API
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-cors-wildcard
+            name: CORS Wildcard Origin
+            properties:
+              precision: medium
+              tags:
+                - cors
+                - misconfiguration
+                - typescript
+                - CWE-942
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: CORS Wildcard Origin
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: HTTP request with user-controlled URL can lead to SSRF
+            help:
+              markdown: "## Server-Side Request Forgery\n\nHTTP request with user-controlled URL can lead to SSRF\n\n### CWE\nCWE-918\n\n### OWASP\nA10:2021 - Server-Side Request Forgery"
+              text: HTTP request with user-controlled URL can lead to SSRF
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: ts-ssrf
+            name: Server-Side Request Forgery
+            properties:
+              precision: high
+              tags:
+                - ssrf
+                - network
+                - typescript
+                - CWE-918
+                - "A10:2021 - Server-Side Request Forgery"
+            shortDescription:
+              markdown: ~
+              text: Server-Side Request Forgery
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Potentially unsafe function call
+            help:
+              markdown: "## Unsafe Function Call\n\nPotentially unsafe function call\n\n### CWE\nCWE-94, CWE-95\n\n### OWASP\nA03:2021 - Injection"
+              text: Potentially unsafe function call
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: unsafe-function-call
+            name: Unsafe Function Call
+            properties:
+              precision: medium
+              tags:
+                - injection
+                - code-execution
+                - python
+                - CWE-94
+                - CWE-95
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Unsafe Function Call
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: exec() allows arbitrary code execution
+            help:
+              markdown: "## Exec Function\n\nexec() allows arbitrary code execution\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: exec() allows arbitrary code execution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-exec
+            name: Exec Function
+            properties:
+              precision: high
+              tags:
+                - injection
+                - code-execution
+                - python
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Exec Function
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: compile() can be used for code injection
+            help:
+              markdown: "## Compile Function\n\ncompile() can be used for code injection\n\n### CWE\nCWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: compile() can be used for code injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-compile
+            name: Compile Function
+            properties:
+              precision: medium
+              tags:
+                - injection
+                - python
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Compile Function
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: subprocess with shell=True is vulnerable to command injection
+            help:
+              markdown: "## Subprocess Shell\n\nsubprocess with shell=True is vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: subprocess with shell=True is vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-subprocess
+            name: Subprocess Shell
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - python
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Subprocess Shell
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: os.system is vulnerable to command injection
+            help:
+              markdown: "## os.system Command\n\nos.system is vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: os.system is vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-os-system
+            name: os.system Command
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - python
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: os.system Command
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential unsafe deserialization vulnerability (pickle and similar serializers)
+            help:
+              markdown: "## Unsafe Deserialization\n\nPotential unsafe deserialization vulnerability (pickle and similar serializers)\n\n### CWE\nCWE-502\n\n### OWASP\nA08:2021 - Software and Data Integrity Failures"
+              text: Potential unsafe deserialization vulnerability (pickle and similar serializers)
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: unsafe-deserialization
+            name: Unsafe Deserialization
+            properties:
+              precision: high
+              tags:
+                - deserialization
+                - python
+                - CWE-502
+                - "A08:2021 - Software and Data Integrity Failures"
+            shortDescription:
+              markdown: ~
+              text: Unsafe Deserialization
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: yaml.load without safe Loader is vulnerable to code execution
+            help:
+              markdown: "## Unsafe YAML Load\n\nyaml.load without safe Loader is vulnerable to code execution\n\n### CWE\nCWE-502\n\n### OWASP\nA08:2021 - Software and Data Integrity Failures"
+              text: yaml.load without safe Loader is vulnerable to code execution
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-yaml-load
+            name: Unsafe YAML Load
+            properties:
+              precision: high
+              tags:
+                - deserialization
+                - yaml
+                - python
+                - CWE-502
+                - "A08:2021 - Software and Data Integrity Failures"
+            shortDescription:
+              markdown: ~
+              text: Unsafe YAML Load
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: marshal.loads can execute arbitrary code
+            help:
+              markdown: "## Marshal Deserialization\n\nmarshal.loads can execute arbitrary code\n\n### CWE\nCWE-502\n\n### OWASP\nA08:2021 - Software and Data Integrity Failures"
+              text: marshal.loads can execute arbitrary code
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-marshal
+            name: Marshal Deserialization
+            properties:
+              precision: high
+              tags:
+                - deserialization
+                - python
+                - CWE-502
+                - "A08:2021 - Software and Data Integrity Failures"
+            shortDescription:
+              markdown: ~
+              text: Marshal Deserialization
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: render_template_string with user input is vulnerable to SSTI
+            help:
+              markdown: "## Server-Side Template Injection\n\nrender_template_string with user input is vulnerable to SSTI\n\n### CWE\nCWE-94, CWE-1336\n\n### OWASP\nA03:2021 - Injection"
+              text: render_template_string with user input is vulnerable to SSTI
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-ssti
+            name: Server-Side Template Injection
+            properties:
+              precision: high
+              tags:
+                - ssti
+                - flask
+                - python
+                - CWE-94
+                - CWE-1336
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Server-Side Template Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Creating Jinja2 templates from user input is vulnerable to SSTI
+            help:
+              markdown: "## Jinja2 Template from String\n\nCreating Jinja2 templates from user input is vulnerable to SSTI\n\n### CWE\nCWE-94, CWE-1336\n\n### OWASP\nA03:2021 - Injection"
+              text: Creating Jinja2 templates from user input is vulnerable to SSTI
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-jinja-ssti
+            name: Jinja2 Template from String
+            properties:
+              precision: high
+              tags:
+                - ssti
+                - jinja2
+                - python
+                - CWE-94
+                - CWE-1336
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Jinja2 Template from String
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: MD5 and SHA1 are cryptographically weak
+            help:
+              markdown: "## Weak Cryptographic Hash\n\nMD5 and SHA1 are cryptographically weak\n\n### CWE\nCWE-327, CWE-328\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: MD5 and SHA1 are cryptographically weak
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-weak-crypto
+            name: Weak Cryptographic Hash
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - weak-algorithm
+                - python
+                - CWE-327
+                - CWE-328
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Weak Cryptographic Hash
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: random module is not cryptographically secure
+            help:
+              markdown: "## Insecure Randomness\n\nrandom module is not cryptographically secure\n\n### CWE\nCWE-330\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: random module is not cryptographically secure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-insecure-random
+            name: Insecure Randomness
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - randomness
+                - python
+                - CWE-330
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Insecure Randomness
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential path traversal via file operations
+            help:
+              markdown: "## Path Traversal\n\nPotential path traversal via file operations\n\n### CWE\nCWE-22\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Potential path traversal via file operations
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-path-traversal
+            name: Path Traversal
+            properties:
+              precision: high
+              tags:
+                - path-traversal
+                - python
+                - CWE-22
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Path Traversal
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential SSRF via HTTP requests with user-controlled URL
+            help:
+              markdown: "## Server-Side Request Forgery\n\nPotential SSRF via HTTP requests with user-controlled URL\n\n### CWE\nCWE-918\n\n### OWASP\nA10:2021 - Server-Side Request Forgery"
+              text: Potential SSRF via HTTP requests with user-controlled URL
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-ssrf
+            name: Server-Side Request Forgery
+            properties:
+              precision: high
+              tags:
+                - ssrf
+                - python
+                - CWE-918
+                - "A10:2021 - Server-Side Request Forgery"
+            shortDescription:
+              markdown: ~
+              text: Server-Side Request Forgery
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential SSRF via urllib
+            help:
+              markdown: "## urllib SSRF\n\nPotential SSRF via urllib\n\n### CWE\nCWE-918\n\n### OWASP\nA10:2021 - Server-Side Request Forgery"
+              text: Potential SSRF via urllib
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-urllib-ssrf
+            name: urllib SSRF
+            properties:
+              precision: high
+              tags:
+                - ssrf
+                - python
+                - CWE-918
+                - "A10:2021 - Server-Side Request Forgery"
+            shortDescription:
+              markdown: ~
+              text: urllib SSRF
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Raw SQL in Django can lead to SQL injection
+            help:
+              markdown: "## Django Raw SQL\n\nRaw SQL in Django can lead to SQL injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: Raw SQL in Django can lead to SQL injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-django-raw-sql
+            name: Django Raw SQL
+            properties:
+              precision: high
+              tags:
+                - injection
+                - sql
+                - django
+                - python
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Django Raw SQL
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Debug mode should be disabled in production
+            help:
+              markdown: "## Debug Mode Enabled\n\nDebug mode should be disabled in production\n\n### CWE\nCWE-489\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Debug mode should be disabled in production
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-debug-enabled
+            name: Debug Mode Enabled
+            properties:
+              precision: medium
+              tags:
+                - debug
+                - configuration
+                - python
+                - CWE-489
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: Debug Mode Enabled
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Assert statements are disabled with -O flag
+            help:
+              markdown: "## Assert in Production\n\nAssert statements are disabled with -O flag\n\n### CWE\nCWE-617\n\n### OWASP\n"
+              text: Assert statements are disabled with -O flag
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-assert
+            name: Assert in Production
+            properties:
+              precision: low
+              tags:
+                - assert
+                - python
+                - CWE-617
+            shortDescription:
+              markdown: ~
+              text: Assert in Production
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: JWT decoded without signature verification
+            help:
+              markdown: "## JWT Without Verification\n\nJWT decoded without signature verification\n\n### CWE\nCWE-347\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: JWT decoded without signature verification
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-jwt-no-verify
+            name: JWT Without Verification
+            properties:
+              precision: high
+              tags:
+                - jwt
+                - authentication
+                - python
+                - CWE-347
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: JWT Without Verification
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: XML parsing without disabling external entities is vulnerable to XXE
+            help:
+              markdown: "## XML External Entity (XXE)\n\nXML parsing without disabling external entities is vulnerable to XXE\n\n### CWE\nCWE-611\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: XML parsing without disabling external entities is vulnerable to XXE
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-xxe
+            name: XML External Entity (XXE)
+            properties:
+              precision: high
+              tags:
+                - xxe
+                - xml
+                - python
+                - CWE-611
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: XML External Entity (XXE)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: LDAP query with unvalidated user input can lead to authentication bypass
+            help:
+              markdown: "## LDAP Injection\n\nLDAP query with unvalidated user input can lead to authentication bypass\n\n### CWE\nCWE-90\n\n### OWASP\nA03:2021 - Injection"
+              text: LDAP query with unvalidated user input can lead to authentication bypass
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-ldap-injection
+            name: LDAP Injection
+            properties:
+              precision: high
+              tags:
+                - ldap
+                - injection
+                - python
+                - CWE-90
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: LDAP Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Using == for secret comparison is vulnerable to timing attacks
+            help:
+              markdown: "## Timing Attack Vulnerability\n\nUsing == for secret comparison is vulnerable to timing attacks\n\n### CWE\nCWE-208\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: Using == for secret comparison is vulnerable to timing attacks
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-timing-attack
+            name: Timing Attack Vulnerability
+            properties:
+              precision: high
+              tags:
+                - timing
+                - crypto
+                - python
+                - CWE-208
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Timing Attack Vulnerability
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: MongoDB query with user input can lead to NoSQL injection
+            help:
+              markdown: "## NoSQL Injection\n\nMongoDB query with user input can lead to NoSQL injection\n\n### CWE\nCWE-943\n\n### OWASP\nA03:2021 - Injection"
+              text: MongoDB query with user input can lead to NoSQL injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-nosql-injection
+            name: NoSQL Injection
+            properties:
+              precision: high
+              tags:
+                - nosql
+                - mongodb
+                - injection
+                - python
+                - CWE-943
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: NoSQL Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Extracting zip files without path validation allows arbitrary file write
+            help:
+              markdown: "## Zip Slip Vulnerability\n\nExtracting zip files without path validation allows arbitrary file write\n\n### CWE\nCWE-22\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Extracting zip files without path validation allows arbitrary file write
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-zipfile-path-traversal
+            name: Zip Slip Vulnerability
+            properties:
+              precision: high
+              tags:
+                - zip-slip
+                - path-traversal
+                - python
+                - CWE-22
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Zip Slip Vulnerability
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: tarfile.extractall on untrusted archives may write files outside the destination
+            help:
+              markdown: "## Tarfile Path Traversal\n\ntarfile.extractall on untrusted archives may write files outside the destination\n\n### CWE\nCWE-22, CWE-73\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: tarfile.extractall on untrusted archives may write files outside the destination
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-tarfile-path-traversal
+            name: Tarfile Path Traversal
+            properties:
+              precision: high
+              tags:
+                - tarfile
+                - path-traversal
+                - zip-slip
+                - python
+                - CWE-22
+                - CWE-73
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Tarfile Path Traversal
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Disabling Jinja2 autoescape allows XSS vulnerabilities
+            help:
+              markdown: "## Jinja2 Autoescape Disabled\n\nDisabling Jinja2 autoescape allows XSS vulnerabilities\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: Disabling Jinja2 autoescape allows XSS vulnerabilities
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-jinja-autoescape-off
+            name: Jinja2 Autoescape Disabled
+            properties:
+              precision: high
+              tags:
+                - jinja2
+                - xss
+                - python
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Jinja2 Autoescape Disabled
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: CORS with wildcard origin exposes API to all domains
+            help:
+              markdown: "## CORS Wildcard Origin\n\nCORS with wildcard origin exposes API to all domains\n\n### CWE\nCWE-942\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: CORS with wildcard origin exposes API to all domains
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-cors-wildcard
+            name: CORS Wildcard Origin
+            properties:
+              precision: medium
+              tags:
+                - cors
+                - misconfiguration
+                - python
+                - CWE-942
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: CORS Wildcard Origin
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: subprocess with shell=True allows command injection
+            help:
+              markdown: "## Subprocess shell=True\n\nsubprocess with shell=True allows command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: subprocess with shell=True allows command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-shell-true
+            name: Subprocess shell=True
+            properties:
+              precision: high
+              tags:
+                - command-injection
+                - subprocess
+                - python
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Subprocess shell=True
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Logging potentially sensitive data
+            help:
+              markdown: "## Sensitive Data in Logs\n\nLogging potentially sensitive data\n\n### CWE\nCWE-532\n\n### OWASP\nA09:2021 - Security Logging and Monitoring Failures"
+              text: Logging potentially sensitive data
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-logging-sensitive
+            name: Sensitive Data in Logs
+            properties:
+              precision: medium
+              tags:
+                - logging
+                - sensitive-data
+                - python
+                - CWE-532
+                - "A09:2021 - Security Logging and Monitoring Failures"
+            shortDescription:
+              markdown: ~
+              text: Sensitive Data in Logs
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: User-controlled regex pattern can lead to ReDoS
+            help:
+              markdown: "## ReDoS Vulnerability\n\nUser-controlled regex pattern can lead to ReDoS\n\n### CWE\nCWE-1333, CWE-400\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: User-controlled regex pattern can lead to ReDoS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-regex-redos
+            name: ReDoS Vulnerability
+            properties:
+              precision: high
+              tags:
+                - redos
+                - regex
+                - dos
+                - python
+                - CWE-1333
+                - CWE-400
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: ReDoS Vulnerability
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Directly passing request data to model update allows privilege escalation
+            help:
+              markdown: "## Mass Assignment Vulnerability\n\nDirectly passing request data to model update allows privilege escalation\n\n### CWE\nCWE-915\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Directly passing request data to model update allows privilege escalation
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-mass-assignment
+            name: Mass Assignment Vulnerability
+            properties:
+              precision: high
+              tags:
+                - mass-assignment
+                - authorization
+                - python
+                - CWE-915
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Mass Assignment Vulnerability
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Redirect without URL validation can lead to phishing
+            help:
+              markdown: "## Open Redirect\n\nRedirect without URL validation can lead to phishing\n\n### CWE\nCWE-601\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Redirect without URL validation can lead to phishing
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: python-open-redirect
+            name: Open Redirect
+            properties:
+              precision: medium
+              tags:
+                - redirect
+                - phishing
+                - python
+                - CWE-601
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Open Redirect
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: unwrap() can panic if the value is None or Err
+            help:
+              markdown: "## Unwrap Without Check\n\nunwrap() can panic if the value is None or Err\n\n### CWE\nCWE-476\n\n### OWASP\n"
+              text: unwrap() can panic if the value is None or Err
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: null-pointer
+            name: Unwrap Without Check
+            properties:
+              precision: medium
+              tags:
+                - panic
+                - error-handling
+                - rust
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Unwrap Without Check
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: expect() can panic with a custom message
+            help:
+              markdown: "## Expect Panic\n\nexpect() can panic with a custom message\n\n### CWE\nCWE-476\n\n### OWASP\n"
+              text: expect() can panic with a custom message
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: expect-panic
+            name: Expect Panic
+            properties:
+              precision: medium
+              tags:
+                - panic
+                - error-handling
+                - rust
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Expect Panic
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: panic!() will abort the program
+            help:
+              markdown: "## Explicit Panic\n\npanic!() will abort the program\n\n### CWE\nCWE-754\n\n### OWASP\n"
+              text: panic!() will abort the program
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-panic
+            name: Explicit Panic
+            properties:
+              precision: low
+              tags:
+                - panic
+                - rust
+                - CWE-754
+            shortDescription:
+              markdown: ~
+              text: Explicit Panic
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: todo!() / unimplemented!() will panic at runtime
+            help:
+              markdown: "## Unimplemented Code\n\ntodo!() / unimplemented!() will panic at runtime\n\n### CWE\nCWE-754\n\n### OWASP\n"
+              text: todo!() / unimplemented!() will panic at runtime
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-todo
+            name: Unimplemented Code
+            properties:
+              precision: low
+              tags:
+                - incomplete
+                - panic
+                - rust
+                - CWE-754
+            shortDescription:
+              markdown: ~
+              text: Unimplemented Code
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: unreachable!() will panic if reached
+            help:
+              markdown: "## Unreachable Code\n\nunreachable!() will panic if reached\n\n### CWE\nCWE-754\n\n### OWASP\n"
+              text: unreachable!() will panic if reached
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-unreachable
+            name: Unreachable Code
+            properties:
+              precision: low
+              tags:
+                - panic
+                - rust
+                - CWE-754
+            shortDescription:
+              markdown: ~
+              text: Unreachable Code
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: "unsafe block bypasses Rust's safety guarantees"
+            help:
+              markdown: "## Unsafe Block\n\nunsafe block bypasses Rust's safety guarantees\n\n### CWE\nCWE-119\n\n### OWASP\n"
+              text: "unsafe block bypasses Rust's safety guarantees"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-unsafe
+            name: Unsafe Block
+            properties:
+              precision: medium
+              tags:
+                - unsafe
+                - rust
+                - CWE-119
+            shortDescription:
+              markdown: ~
+              text: Unsafe Block
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: "unsafe function declaration bypasses Rust's safety guarantees"
+            help:
+              markdown: "## Unsafe Function\n\nunsafe function declaration bypasses Rust's safety guarantees\n\n### CWE\nCWE-119\n\n### OWASP\n"
+              text: "unsafe function declaration bypasses Rust's safety guarantees"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-unsafe-fn
+            name: Unsafe Function
+            properties:
+              precision: medium
+              tags:
+                - unsafe
+                - rust
+                - CWE-119
+            shortDescription:
+              markdown: ~
+              text: Unsafe Function
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: "unsafe trait implementation bypasses Rust's safety guarantees"
+            help:
+              markdown: "## Unsafe Implementation\n\nunsafe trait implementation bypasses Rust's safety guarantees\n\n### CWE\nCWE-119\n\n### OWASP\n"
+              text: "unsafe trait implementation bypasses Rust's safety guarantees"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-unsafe-impl
+            name: Unsafe Implementation
+            properties:
+              precision: medium
+              tags:
+                - unsafe
+                - rust
+                - CWE-119
+            shortDescription:
+              markdown: ~
+              text: Unsafe Implementation
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: "std::mem::transmute can cause undefined behavior"
+            help:
+              markdown: "## Transmute\n\nstd::mem::transmute can cause undefined behavior\n\n### CWE\nCWE-843\n\n### OWASP\n"
+              text: "std::mem::transmute can cause undefined behavior"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-transmute
+            name: Transmute
+            properties:
+              precision: high
+              tags:
+                - unsafe
+                - transmute
+                - rust
+                - CWE-843
+            shortDescription:
+              markdown: ~
+              text: Transmute
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Dereferencing raw pointers is unsafe
+            help:
+              markdown: "## Raw Pointer Dereference\n\nDereferencing raw pointers is unsafe\n\n### CWE\nCWE-119, CWE-476\n\n### OWASP\n"
+              text: Dereferencing raw pointers is unsafe
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-raw-pointer
+            name: Raw Pointer Dereference
+            properties:
+              precision: medium
+              tags:
+                - unsafe
+                - pointer
+                - rust
+                - CWE-119
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Raw Pointer Dereference
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: "Command::new may be vulnerable to command injection"
+            help:
+              markdown: "## Command Execution\n\nCommand::new may be vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: "Command::new may be vulnerable to command injection"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-command
+            name: Command Execution
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - rust
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Execution
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Raw SQL query may be vulnerable to injection
+            help:
+              markdown: "## SQL Injection\n\nRaw SQL query may be vulnerable to injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: Raw SQL query may be vulnerable to injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-sql-injection
+            name: SQL Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - sql
+                - rust
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: SQL Injection
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: File created with overly permissive permissions
+            help:
+              markdown: "## Overly Permissive File\n\nFile created with overly permissive permissions\n\n### CWE\nCWE-732\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: File created with overly permissive permissions
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-file-permission
+            name: Overly Permissive File
+            properties:
+              precision: medium
+              tags:
+                - file
+                - permissions
+                - rust
+                - CWE-732
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Overly Permissive File
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: MD5 and SHA1 are cryptographically weak
+            help:
+              markdown: "## Weak Cryptographic Hash\n\nMD5 and SHA1 are cryptographically weak\n\n### CWE\nCWE-327, CWE-328\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: MD5 and SHA1 are cryptographically weak
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-weak-crypto
+            name: Weak Cryptographic Hash
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - weak-algorithm
+                - rust
+                - CWE-327
+                - CWE-328
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Weak Cryptographic Hash
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: static mut can cause data races
+            help:
+              markdown: "## Static Mutable Variable\n\nstatic mut can cause data races\n\n### CWE\nCWE-362\n\n### OWASP\n"
+              text: static mut can cause data races
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-static-mut
+            name: Static Mutable Variable
+            properties:
+              precision: high
+              tags:
+                - concurrency
+                - data-race
+                - rust
+                - CWE-362
+            shortDescription:
+              markdown: ~
+              text: Static Mutable Variable
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: "Box::leak intentionally leaks memory"
+            help:
+              markdown: "## Box::leak Memory Leak\n\nBox::leak intentionally leaks memory\n\n### CWE\nCWE-401\n\n### OWASP\n"
+              text: "Box::leak intentionally leaks memory"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-box-leak
+            name: "Box::leak Memory Leak"
+            properties:
+              precision: low
+              tags:
+                - memory
+                - leak
+                - rust
+                - CWE-401
+            shortDescription:
+              markdown: ~
+              text: "Box::leak Memory Leak"
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Using format! for SQL queries can lead to SQL injection
+            help:
+              markdown: "## Format String SQL\n\nUsing format! for SQL queries can lead to SQL injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: Using format! for SQL queries can lead to SQL injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-format-sql
+            name: Format String SQL
+            properties:
+              precision: high
+              tags:
+                - sql
+                - injection
+                - rust
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Format String SQL
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: Regex compiled from user input can cause ReDoS
+            help:
+              markdown: "## User-Controlled Regex\n\nRegex compiled from user input can cause ReDoS\n\n### CWE\nCWE-1333, CWE-400\n\n### OWASP\n"
+              text: Regex compiled from user input can cause ReDoS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-regex-user-input
+            name: User-Controlled Regex
+            properties:
+              precision: medium
+              tags:
+                - redos
+                - regex
+                - rust
+                - CWE-1333
+                - CWE-400
+            shortDescription:
+              markdown: ~
+              text: User-Controlled Regex
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: debug_assert! is removed in release builds
+            help:
+              markdown: "## Debug Assert in Security Code\n\ndebug_assert! is removed in release builds\n\n### CWE\nCWE-617\n\n### OWASP\n"
+              text: debug_assert! is removed in release builds
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-debug-assert
+            name: Debug Assert in Security Code
+            properties:
+              precision: low
+              tags:
+                - assert
+                - debug
+                - rust
+                - CWE-617
+            shortDescription:
+              markdown: ~
+              text: Debug Assert in Security Code
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: "forget() prevents Drop from running, potentially leaking resources"
+            help:
+              markdown: "## std::mem::forget\n\nforget() prevents Drop from running, potentially leaking resources\n\n### CWE\nCWE-401\n\n### OWASP\n"
+              text: "forget() prevents Drop from running, potentially leaking resources"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: rust-forget
+            name: "std::mem::forget"
+            properties:
+              precision: low
+              tags:
+                - memory
+                - drop
+                - rust
+                - CWE-401
+            shortDescription:
+              markdown: ~
+              text: "std::mem::forget"
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: exec.Command may be vulnerable to command injection
+            help:
+              markdown: "## Command Injection\n\nexec.Command may be vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: exec.Command may be vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-command-injection
+            name: Command Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - go
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: exec.CommandContext may be vulnerable to command injection
+            help:
+              markdown: "## CommandContext Injection\n\nexec.CommandContext may be vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: exec.CommandContext may be vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-command-context
+            name: CommandContext Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - go
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: CommandContext Injection
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: SQL query may be vulnerable to injection
+            help:
+              markdown: "## SQL Injection\n\nSQL query may be vulnerable to injection\n\n### CWE\nCWE-89\n\n### OWASP\nA03:2021 - Injection"
+              text: SQL query may be vulnerable to injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-sql-injection
+            name: SQL Injection
+            properties:
+              precision: high
+              tags:
+                - injection
+                - sql
+                - go
+                - CWE-89
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: SQL Injection
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: "unsafe.Pointer bypasses Go's type safety"
+            help:
+              markdown: "## Unsafe Pointer\n\nunsafe.Pointer bypasses Go's type safety\n\n### CWE\nCWE-119\n\n### OWASP\n"
+              text: "unsafe.Pointer bypasses Go's type safety"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-unsafe
+            name: Unsafe Pointer
+            properties:
+              precision: medium
+              tags:
+                - unsafe
+                - pointer
+                - go
+                - CWE-119
+            shortDescription:
+              markdown: ~
+              text: Unsafe Pointer
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: math/rand is not cryptographically secure
+            help:
+              markdown: "## Insecure Randomness\n\nmath/rand is not cryptographically secure\n\n### CWE\nCWE-330\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: math/rand is not cryptographically secure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-insecure-rand
+            name: Insecure Randomness
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - randomness
+                - go
+                - CWE-330
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Insecure Randomness
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: "MD5, SHA1, DES, RC4 are cryptographically weak"
+            help:
+              markdown: "## Weak Cryptographic Algorithm\n\nMD5, SHA1, DES, RC4 are cryptographically weak\n\n### CWE\nCWE-327, CWE-328\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: "MD5, SHA1, DES, RC4 are cryptographically weak"
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-weak-crypto
+            name: Weak Cryptographic Algorithm
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - weak-algorithm
+                - go
+                - CWE-327
+                - CWE-328
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Weak Cryptographic Algorithm
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Potential path traversal via file operations
+            help:
+              markdown: "## Path Traversal\n\nPotential path traversal via file operations\n\n### CWE\nCWE-22\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: Potential path traversal via file operations
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-path-traversal
+            name: Path Traversal
+            properties:
+              precision: high
+              tags:
+                - path-traversal
+                - go
+                - CWE-22
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Path Traversal
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: template.HTML bypasses auto-escaping and can lead to XSS
+            help:
+              markdown: "## Unescaped HTML Template\n\ntemplate.HTML bypasses auto-escaping and can lead to XSS\n\n### CWE\nCWE-79\n\n### OWASP\nA03:2021 - Injection"
+              text: template.HTML bypasses auto-escaping and can lead to XSS
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-template-html
+            name: Unescaped HTML Template
+            properties:
+              precision: high
+              tags:
+                - xss
+                - template
+                - go
+                - CWE-79
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Unescaped HTML Template
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: defer in loop may cause resource exhaustion
+            help:
+              markdown: "## Defer in Loop\n\ndefer in loop may cause resource exhaustion\n\n### CWE\nCWE-404\n\n### OWASP\n"
+              text: defer in loop may cause resource exhaustion
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-defer-loop
+            name: Defer in Loop
+            properties:
+              precision: medium
+              tags:
+                - resource
+                - defer
+                - go
+                - CWE-404
+            shortDescription:
+              markdown: ~
+              text: Defer in Loop
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Anonymous goroutine may leak without proper synchronization
+            help:
+              markdown: "## Potential Goroutine Leak\n\nAnonymous goroutine may leak without proper synchronization\n\n### CWE\nCWE-404\n\n### OWASP\n"
+              text: Anonymous goroutine may leak without proper synchronization
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-goroutine-leak
+            name: Potential Goroutine Leak
+            properties:
+              precision: low
+              tags:
+                - concurrency
+                - goroutine
+                - go
+                - CWE-404
+            shortDescription:
+              markdown: ~
+              text: Potential Goroutine Leak
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Error return value ignored
+            help:
+              markdown: "## Ignored Error\n\nError return value ignored\n\n### CWE\nCWE-252\n\n### OWASP\n"
+              text: Error return value ignored
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-ignored-error
+            name: Ignored Error
+            properties:
+              precision: low
+              tags:
+                - error-handling
+                - go
+                - CWE-252
+            shortDescription:
+              markdown: ~
+              text: Ignored Error
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: XML parsing may be vulnerable to XXE attacks
+            help:
+              markdown: "## XML External Entity (XXE)\n\nXML parsing may be vulnerable to XXE attacks\n\n### CWE\nCWE-611\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: XML parsing may be vulnerable to XXE attacks
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-xxe
+            name: XML External Entity (XXE)
+            properties:
+              precision: high
+              tags:
+                - xxe
+                - xml
+                - go
+                - CWE-611
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: XML External Entity (XXE)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: InsecureSkipVerify disables TLS certificate validation
+            help:
+              markdown: "## TLS Certificate Verification Disabled\n\nInsecureSkipVerify disables TLS certificate validation\n\n### CWE\nCWE-295\n\n### OWASP\nA07:2021 - Identification and Authentication Failures"
+              text: InsecureSkipVerify disables TLS certificate validation
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-tls-insecure-skip-verify
+            name: TLS Certificate Verification Disabled
+            properties:
+              precision: high
+              tags:
+                - tls
+                - certificate
+                - go
+                - CWE-295
+                - "A07:2021 - Identification and Authentication Failures"
+            shortDescription:
+              markdown: ~
+              text: TLS Certificate Verification Disabled
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: text/template does not escape HTML - use html/template instead
+            help:
+              markdown: "## Text Template Injection\n\ntext/template does not escape HTML - use html/template instead\n\n### CWE\nCWE-79, CWE-94\n\n### OWASP\nA03:2021 - Injection"
+              text: text/template does not escape HTML - use html/template instead
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-text-template
+            name: Text Template Injection
+            properties:
+              precision: high
+              tags:
+                - ssti
+                - template
+                - go
+                - CWE-79
+                - CWE-94
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Text Template Injection
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: pprof endpoints expose sensitive profiling data
+            help:
+              markdown: "## pprof Debug Endpoint Enabled\n\npprof endpoints expose sensitive profiling data\n\n### CWE\nCWE-200\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: pprof endpoints expose sensitive profiling data
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-pprof-enabled
+            name: pprof Debug Endpoint Enabled
+            properties:
+              precision: medium
+              tags:
+                - pprof
+                - debug
+                - go
+                - CWE-200
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: pprof Debug Endpoint Enabled
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Using bytes.Equal or == for secret comparison is vulnerable to timing attacks
+            help:
+              markdown: "## Timing Attack Vulnerability\n\nUsing bytes.Equal or == for secret comparison is vulnerable to timing attacks\n\n### CWE\nCWE-208\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: Using bytes.Equal or == for secret comparison is vulnerable to timing attacks
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-timing-attack
+            name: Timing Attack Vulnerability
+            properties:
+              precision: high
+              tags:
+                - timing
+                - crypto
+                - go
+                - CWE-208
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Timing Attack Vulnerability
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: MongoDB query with user input may be vulnerable
+            help:
+              markdown: "## NoSQL Injection\n\nMongoDB query with user input may be vulnerable\n\n### CWE\nCWE-943\n\n### OWASP\nA03:2021 - Injection"
+              text: MongoDB query with user input may be vulnerable
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-nosql-injection
+            name: NoSQL Injection
+            properties:
+              precision: high
+              tags:
+                - nosql
+                - mongodb
+                - go
+                - CWE-943
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: NoSQL Injection
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: http.Redirect with user-controlled URL can lead to phishing
+            help:
+              markdown: "## Open Redirect\n\nhttp.Redirect with user-controlled URL can lead to phishing\n\n### CWE\nCWE-601\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: http.Redirect with user-controlled URL can lead to phishing
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-open-redirect
+            name: Open Redirect
+            properties:
+              precision: medium
+              tags:
+                - redirect
+                - phishing
+                - go
+                - CWE-601
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Open Redirect
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Binding to 0.0.0.0 exposes the service to all interfaces
+            help:
+              markdown: "## Hardcoded IP Binding\n\nBinding to 0.0.0.0 exposes the service to all interfaces\n\n### CWE\nCWE-668\n\n### OWASP\nA05:2021 - Security Misconfiguration"
+              text: Binding to 0.0.0.0 exposes the service to all interfaces
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: go-hardcoded-bind
+            name: Hardcoded IP Binding
+            properties:
+              precision: low
+              tags:
+                - network
+                - binding
+                - go
+                - CWE-668
+                - "A05:2021 - Security Misconfiguration"
+            shortDescription:
+              markdown: ~
+              text: Hardcoded IP Binding
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: strcpy does not check buffer bounds
+            help:
+              markdown: "## Buffer Overflow (strcpy)\n\nstrcpy does not check buffer bounds\n\n### CWE\nCWE-120, CWE-119\n\n### OWASP\nA03:2021 - Injection"
+              text: strcpy does not check buffer bounds
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-buffer-overflow
+            name: Buffer Overflow (strcpy)
+            properties:
+              precision: high
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+                - CWE-119
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Buffer Overflow (strcpy)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: strcat does not check buffer bounds
+            help:
+              markdown: "## Buffer Overflow (strcat)\n\nstrcat does not check buffer bounds\n\n### CWE\nCWE-120, CWE-119\n\n### OWASP\nA03:2021 - Injection"
+              text: strcat does not check buffer bounds
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-strcat
+            name: Buffer Overflow (strcat)
+            properties:
+              precision: high
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+                - CWE-119
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Buffer Overflow (strcat)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: gets() is inherently unsafe and should never be used
+            help:
+              markdown: "## Dangerous gets() Function\n\ngets() is inherently unsafe and should never be used\n\n### CWE\nCWE-120, CWE-242\n\n### OWASP\nA03:2021 - Injection"
+              text: gets() is inherently unsafe and should never be used
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-gets
+            name: Dangerous gets() Function
+            properties:
+              precision: high
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+                - CWE-242
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Dangerous gets() Function
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: sprintf does not check buffer bounds
+            help:
+              markdown: "## Buffer Overflow (sprintf)\n\nsprintf does not check buffer bounds\n\n### CWE\nCWE-120, CWE-119\n\n### OWASP\nA03:2021 - Injection"
+              text: sprintf does not check buffer bounds
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-sprintf
+            name: Buffer Overflow (sprintf)
+            properties:
+              precision: high
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+                - CWE-119
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Buffer Overflow (sprintf)
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: scanf %s can overflow buffer without width specifier
+            help:
+              markdown: "## Buffer Overflow (scanf)\n\nscanf %s can overflow buffer without width specifier\n\n### CWE\nCWE-120\n\n### OWASP\nA03:2021 - Injection"
+              text: scanf %s can overflow buffer without width specifier
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-scanf
+            name: Buffer Overflow (scanf)
+            properties:
+              precision: medium
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Buffer Overflow (scanf)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: system() is vulnerable to command injection
+            help:
+              markdown: "## Command Injection (system)\n\nsystem() is vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: system() is vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-command-injection
+            name: Command Injection (system)
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - c
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Injection (system)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: popen() is vulnerable to command injection
+            help:
+              markdown: "## Command Injection (popen)\n\npopen() is vulnerable to command injection\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: popen() is vulnerable to command injection
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-popen
+            name: Command Injection (popen)
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - c
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Injection (popen)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: exec family functions can execute arbitrary commands
+            help:
+              markdown: "## Command Execution (exec)\n\nexec family functions can execute arbitrary commands\n\n### CWE\nCWE-78\n\n### OWASP\nA03:2021 - Injection"
+              text: exec family functions can execute arbitrary commands
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-exec
+            name: Command Execution (exec)
+            properties:
+              precision: high
+              tags:
+                - injection
+                - command
+                - c
+                - CWE-78
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Command Execution (exec)
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: printf-family without format string is vulnerable
+            help:
+              markdown: "## Format String Vulnerability\n\nprintf-family without format string is vulnerable\n\n### CWE\nCWE-134\n\n### OWASP\nA03:2021 - Injection"
+              text: printf-family without format string is vulnerable
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-format-string
+            name: Format String Vulnerability
+            properties:
+              precision: high
+              tags:
+                - format-string
+                - c
+                - CWE-134
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Format String Vulnerability
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: malloc(0) behavior is implementation-defined
+            help:
+              markdown: "## Malloc Zero Size\n\nmalloc(0) behavior is implementation-defined\n\n### CWE\nCWE-131\n\n### OWASP\n"
+              text: malloc(0) behavior is implementation-defined
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-malloc-zero
+            name: Malloc Zero Size
+            properties:
+              precision: medium
+              tags:
+                - memory
+                - undefined-behavior
+                - c
+                - CWE-131
+            shortDescription:
+              markdown: ~
+              text: Malloc Zero Size
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: free(NULL) is safe but may indicate logic error
+            help:
+              markdown: "## Free NULL Check\n\nfree(NULL) is safe but may indicate logic error\n\n### CWE\nCWE-476\n\n### OWASP\n"
+              text: free(NULL) is safe but may indicate logic error
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-free-null
+            name: Free NULL Check
+            properties:
+              precision: low
+              tags:
+                - memory
+                - c
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Free NULL Check
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Variable may be used after being freed
+            help:
+              markdown: "## Potential Use After Free\n\nVariable may be used after being freed\n\n### CWE\nCWE-416\n\n### OWASP\n"
+              text: Variable may be used after being freed
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-use-after-free
+            name: Potential Use After Free
+            properties:
+              precision: high
+              tags:
+                - memory
+                - use-after-free
+                - c
+                - CWE-416
+            shortDescription:
+              markdown: ~
+              text: Potential Use After Free
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: Raw pointers should be avoided in modern C++
+            help:
+              markdown: "## Raw Pointer Usage\n\nRaw pointers should be avoided in modern C++\n\n### CWE\nCWE-401\n\n### OWASP\n"
+              text: Raw pointers should be avoided in modern C++
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: cpp-raw-ptr
+            name: Raw Pointer Usage
+            properties:
+              precision: low
+              tags:
+                - memory
+                - modern-cpp
+                - cpp
+                - CWE-401
+            shortDescription:
+              markdown: ~
+              text: Raw Pointer Usage
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: delete on potentially null pointer
+            help:
+              markdown: "## Delete Without Check\n\ndelete on potentially null pointer\n\n### CWE\nCWE-476\n\n### OWASP\n"
+              text: delete on potentially null pointer
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: cpp-delete
+            name: Delete Without Check
+            properties:
+              precision: low
+              tags:
+                - memory
+                - cpp
+                - CWE-476
+            shortDescription:
+              markdown: ~
+              text: Delete Without Check
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: reinterpret_cast can lead to undefined behavior
+            help:
+              markdown: "## Reinterpret Cast\n\nreinterpret_cast can lead to undefined behavior\n\n### CWE\nCWE-843\n\n### OWASP\n"
+              text: reinterpret_cast can lead to undefined behavior
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: cpp-reinterpret-cast
+            name: Reinterpret Cast
+            properties:
+              precision: medium
+              tags:
+                - type-safety
+                - cpp
+                - CWE-843
+            shortDescription:
+              markdown: ~
+              text: Reinterpret Cast
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: memcpy may cause buffer overflow without proper size validation
+            help:
+              markdown: "## Unsafe memcpy\n\nmemcpy may cause buffer overflow without proper size validation\n\n### CWE\nCWE-120\n\n### OWASP\n"
+              text: memcpy may cause buffer overflow without proper size validation
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-memcpy
+            name: Unsafe memcpy
+            properties:
+              precision: medium
+              tags:
+                - buffer-overflow
+                - c
+                - CWE-120
+            shortDescription:
+              markdown: ~
+              text: Unsafe memcpy
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: rand() is not cryptographically secure
+            help:
+              markdown: "## Insecure Randomness\n\nrand() is not cryptographically secure\n\n### CWE\nCWE-330\n\n### OWASP\nA02:2021 - Cryptographic Failures"
+              text: rand() is not cryptographically secure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-insecure-rand
+            name: Insecure Randomness
+            properties:
+              precision: medium
+              tags:
+                - crypto
+                - randomness
+                - c
+                - CWE-330
+                - "A02:2021 - Cryptographic Failures"
+            shortDescription:
+              markdown: ~
+              text: Insecure Randomness
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: mktemp() is vulnerable to race conditions
+            help:
+              markdown: "## Mktemp Race Condition\n\nmktemp() is vulnerable to race conditions\n\n### CWE\nCWE-377\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: mktemp() is vulnerable to race conditions
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-mktemp
+            name: Mktemp Race Condition
+            properties:
+              precision: high
+              tags:
+                - race-condition
+                - tempfile
+                - c
+                - CWE-377
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Mktemp Race Condition
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: open() with O_CREAT should specify mode
+            help:
+              markdown: "## Open Without Mode\n\nopen() with O_CREAT should specify mode\n\n### CWE\nCWE-732\n\n### OWASP\nA01:2021 - Broken Access Control"
+              text: open() with O_CREAT should specify mode
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-open-no-mode
+            name: Open Without Mode
+            properties:
+              precision: medium
+              tags:
+                - file
+                - permissions
+                - c
+                - CWE-732
+                - "A01:2021 - Broken Access Control"
+            shortDescription:
+              markdown: ~
+              text: Open Without Mode
+          - defaultConfiguration:
+              level: error
+            fullDescription:
+              markdown: ~
+              text: Using non-reentrant functions in signal handlers is undefined behavior
+            help:
+              markdown: "## Async-Signal-Unsafe Function\n\nUsing non-reentrant functions in signal handlers is undefined behavior\n\n### CWE\nCWE-479\n\n### OWASP\n"
+              text: Using non-reentrant functions in signal handlers is undefined behavior
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-signal-unsafe
+            name: Async-Signal-Unsafe Function
+            properties:
+              precision: high
+              tags:
+                - signal
+                - async-safety
+                - c
+                - CWE-479
+            shortDescription:
+              markdown: ~
+              text: Async-Signal-Unsafe Function
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: realloc() return must be checked; original pointer is lost on failure
+            help:
+              markdown: "## Unchecked Realloc\n\nrealloc() return must be checked; original pointer is lost on failure\n\n### CWE\nCWE-401, CWE-252\n\n### OWASP\n"
+              text: realloc() return must be checked; original pointer is lost on failure
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-realloc-unchecked
+            name: Unchecked Realloc
+            properties:
+              precision: medium
+              tags:
+                - memory
+                - leak
+                - c
+                - CWE-401
+                - CWE-252
+            shortDescription:
+              markdown: ~
+              text: Unchecked Realloc
+          - defaultConfiguration:
+              level: note
+            fullDescription:
+              markdown: ~
+              text: atoi/atol cannot detect conversion errors
+            help:
+              markdown: "## Unchecked atoi\n\natoi/atol cannot detect conversion errors\n\n### CWE\nCWE-252\n\n### OWASP\n"
+              text: atoi/atol cannot detect conversion errors
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-atoi-unchecked
+            name: Unchecked atoi
+            properties:
+              precision: low
+              tags:
+                - conversion
+                - error-handling
+                - c
+                - CWE-252
+            shortDescription:
+              markdown: ~
+              text: Unchecked atoi
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: strtok() uses static buffer and is not thread-safe
+            help:
+              markdown: "## Non-Thread-Safe strtok\n\nstrtok() uses static buffer and is not thread-safe\n\n### CWE\nCWE-362\n\n### OWASP\n"
+              text: strtok() uses static buffer and is not thread-safe
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-strtok
+            name: Non-Thread-Safe strtok
+            properties:
+              precision: medium
+              tags:
+                - thread-safety
+                - c
+                - CWE-362
+            shortDescription:
+              markdown: ~
+              text: Non-Thread-Safe strtok
+          - defaultConfiguration:
+              level: warning
+            fullDescription:
+              markdown: ~
+              text: realpath() with fixed buffer may overflow if path exceeds PATH_MAX
+            help:
+              markdown: "## Realpath Buffer Overflow\n\nrealpath() with fixed buffer may overflow if path exceeds PATH_MAX\n\n### CWE\nCWE-120\n\n### OWASP\nA03:2021 - Injection"
+              text: realpath() with fixed buffer may overflow if path exceeds PATH_MAX
+            helpUri: "https://github.com/vulnera-rs/vulnera"
+            id: c-realpath-buffer
+            name: Realpath Buffer Overflow
+            properties:
+              precision: medium
+              tags:
+                - buffer-overflow
+                - path
+                - c
+                - CWE-120
+                - "A03:2021 - Injection"
+            shortDescription:
+              markdown: ~
+              text: Realpath Buffer Overflow
+        semanticVersion: 0.0.0-test
+version: 2.1.0

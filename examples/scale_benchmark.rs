@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-use vulnera_core::config::{AnalysisDepth, SastConfig};
+use vulnera_contract::config::{AnalysisDepth, SastConfig};
 use vulnera_sast::application::use_cases::{AnalysisConfig, ScanProjectUseCase};
 
 #[derive(Debug, Clone)]

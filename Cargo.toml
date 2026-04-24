@@ -1,86 +1,84 @@
 [package]
 name = "vulnera-sast"
-version.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-authors.workspace = true
-license.workspace = true
-repository.workspace = true
-keywords.workspace = true
-categories.workspace = true
+version = "0.5.1"
+edition = "2024"
+rust-version = "1.92"
+authors = ["Vulnera-Team"]
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/Vulnera-rs/vulnera"
+keywords = ["security", "vulnerability", "analysis", "sast"]
+categories = ["web-programming", "development-tools"]
 
 [dependencies]
-vulnera-core = { path = "../vulnera-core" }
+vulnera-core = { git = "https://github.com/Vulnera-rs/vulnera.git" }
 
 # Async runtime
-tokio = { workspace = true }
-async-trait = { workspace = true }
+tokio = { version = "1.51", features = ["full"] }
+async-trait = "0.1.89"
 
 # Serialization
-serde = { workspace = true }
-serde_json = { workspace = true }
-toml = { workspace = true }
-serde_yml = { workspace = true }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.9.8"
+serde_yml = "0.0.12"
 
 # Error handling
-thiserror = { workspace = true }
+thiserror = "2.0"
 
 # Logging
-tracing = { workspace = true }
+tracing = "0.1.44"
 
 # Caching
-moka = { workspace = true }
-once_cell = { workspace = true }
+moka = { version = "0.12", features = ["future"] }
+once_cell = "1.21"
 
 # SAST dependencies
-tree-sitter = { workspace = true }
-tree-sitter-python = { workspace = true }
-tree-sitter-javascript = { workspace = true }
-tree-sitter-typescript = { workspace = true }
-tree-sitter-go = { workspace = true }
-tree-sitter-c = { workspace = true }
-tree-sitter-cpp = { workspace = true }
-tree-sitter-rust = { workspace = true }
-oxc_allocator = { workspace = true }
-oxc_parser = { workspace = true }
-oxc_span = { workspace = true }
-syn = { workspace = true }
-quote = { workspace = true }
-proc-macro2 = { workspace = true }
-walkdir = { workspace = true }
-regex = { workspace = true }
-git2 = { workspace = true }
+tree-sitter = "0.26.3"
+tree-sitter-python = "0.25.0"
+tree-sitter-javascript = "0.25.0"
+tree-sitter-typescript = "0.23.2"
+tree-sitter-go = "0.25.0"
+tree-sitter-c = "0.24.1"
+tree-sitter-cpp = "0.23.4"
+tree-sitter-rust = "0.24.0"
+oxc_allocator = "0.124.0"
+oxc_parser = "0.124.0"
+oxc_span = "0.124.0"
+syn = { version = "2.0", features = ["full", "parsing", "extra-traits"] }
+quote = "1.0"
+proc-macro2 = { version = "1.0", features = ["span-locations"] }
+walkdir = "2.5"
+regex = "1.12"
+git2 = "0.20.3"
 
 # Streaming iterator for tree-sitter queries
-streaming-iterator = { workspace = true }
-futures = { workspace = true }
-
+streaming-iterator = "0.1"
+futures = "0.3.31"
 
 # Caching serialization
-rkyv = { workspace = true }
-sha2 = { workspace = true }
-hex = { workspace = true }
+rkyv = { version = "0.8", features = ["alloc", "bytecheck"] }
+sha2 = "0.11.0"
+hex = "0.4.3"
 
 # UUID for entity IDs
-uuid = { workspace = true }
-
+uuid = { version = "1.20.0", features = ["v4", "serde"] }
 
 # Glob patterns for file matching
-globset = { workspace = true }
+globset = "0.4"
 
 # Temporary files for rule fixtures
-tempfile = { workspace = true }
+tempfile = "3.25.0"
 
 [dev-dependencies]
-tokio-test = { workspace = true }
-proptest = { workspace = true }
-datatest-stable = { workspace = true }
-rstest = { workspace = true }
-tempfile = { workspace = true }
-uuid = { workspace = true }
-serde_yml = { workspace = true }
+tokio-test = "0.4.5"
+proptest = "1.9"
+datatest-stable = "0.3.3"
+rstest = "0.26.1"
+tempfile = "3.25.0"
+uuid = { version = "1.20.0", features = ["v4", "serde"] }
+serde_yml = "0.0.12"
 insta = { version = "1.46", features = ["yaml"] }
-walkdir = { workspace = true }
+walkdir = "2.5"
 
 [[test]]
 name = "datatest_sast_rules"

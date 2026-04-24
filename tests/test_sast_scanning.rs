@@ -5,8 +5,8 @@
 use std::collections::HashMap;
 use tempfile::TempDir;
 use uuid::Uuid;
-use vulnera_core::config::SastConfig;
-use vulnera_core::domain::module::{AnalysisModule, ModuleConfig};
+use vulnera_contract::config::SastConfig;
+use vulnera_contract::domain::module::{AnalysisModule, ModuleConfig};
 use vulnera_sast::SastModule;
 
 async fn create_source_file(dir: &TempDir, filename: &str, content: &str) -> std::path::PathBuf {
@@ -20,7 +20,7 @@ async fn create_source_file(dir: &TempDir, filename: &str, content: &str) -> std
     path
 }
 
-async fn scan_dir(dir: &TempDir) -> vulnera_core::domain::module::ModuleResult {
+async fn scan_dir(dir: &TempDir) -> vulnera_contract::domain::module::ModuleResult {
     let module = SastModule::new();
     let config = ModuleConfig {
         job_id: Uuid::new_v4(),
@@ -31,14 +31,14 @@ async fn scan_dir(dir: &TempDir) -> vulnera_core::domain::module::ModuleResult {
     module.execute(&config).await.expect("scan failed")
 }
 
-fn has_rule(result: &vulnera_core::domain::module::ModuleResult, rule_id: &str) -> bool {
+fn has_rule(result: &vulnera_contract::domain::module::ModuleResult, rule_id: &str) -> bool {
     result
         .findings
         .iter()
         .any(|f| f.rule_id.as_deref() == Some(rule_id))
 }
 
-fn rule_ids(result: &vulnera_core::domain::module::ModuleResult) -> Vec<String> {
+fn rule_ids(result: &vulnera_contract::domain::module::ModuleResult) -> Vec<String> {
     result
         .findings
         .iter()
