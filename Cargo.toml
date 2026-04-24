@@ -10,7 +10,7 @@ keywords = ["security", "vulnerability", "analysis", "sast"]
 categories = ["web-programming", "development-tools"]
 
 [dependencies]
-vulnera-contract = { package = "vulnera-core", git = "https://github.com/Vulnera-rs/vulnera.git" }
+vulnera-contract = { package = "vulnera-contract", git = "https://github.com/Vulnera-rs/vulnera.git" }
 
 # Async runtime
 tokio = { version = "1.51", features = ["full"] }
