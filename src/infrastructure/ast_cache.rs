@@ -180,19 +180,6 @@ pub trait AstCacheService: Send + Sync {
     }
 }
 
-/// Trait abstracting a binary cache backend for AST storage.
-///
-/// This allows the SAST module to remain independent of concrete
-    /// Store raw bytes with a TTL.
-    async fn set_raw(&self, key: &str, value: &[u8], ttl: Duration) -> Result<(), String>;
-
-    /// Delete a single key.
-    async fn delete(&self, key: &str) -> Result<(), String>;
-
-    /// Delete all keys matching a pattern.
-    async fn delete_by_pattern(&self, pattern: &str) -> Result<usize, String>;
-}
-
 /// Dragonfly-backed AST cache implementation
 ///
 /// Generic over any [`CacheBackend`] implementation, allowing the
