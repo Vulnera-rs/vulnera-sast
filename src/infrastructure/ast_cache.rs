@@ -1,4 +1,3 @@
-use vulnera_contract::infrastructure::cache::CacheBackend;
 //! AST caching service for SAST analysis
 //!
 //! This module provides efficient caching of parsed ASTs using Dragonfly DB.
@@ -8,6 +7,7 @@ use vulnera_contract::infrastructure::cache::CacheBackend;
 //! - Configurable TTL
 //! - Support for both raw tree-sitter trees and serialized AST nodes
 
+use vulnera_contract::infrastructure::cache::CacheBackend;
 use crate::domain::value_objects::Language;
 use crate::infrastructure::parsers::AstNode;
 use rkyv::rancor::{self, Error as RancorError};
